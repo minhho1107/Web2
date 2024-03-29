@@ -181,7 +181,38 @@
 				<!-- Sản phẩm -->
 				<div class="row">
 				<!-- Start Single Product -->
-									<!-- TODO -->
+				<?php 
+										$conn = mysqli_connect("localhost","root","","webdb");
+										$sql = "select * from tblsach where HienThi = 0 ORDER BY idSach DESC LIMIT 0,4";
+										//SELECT * FROM `tblsach` ORDER BY idSach DESC LIMIT 0,4			
+										mysqli_query($conn, "SET NAMES 'utf8'");
+										$result = mysqli_query($conn, $sql);
+										
+										while ( $row = mysqli_fetch_array($result) ) {
+											echo 
+											'
+											<div class="product product__style--3 col-lg-3 col-md-5 col-sm-4 col-12">
+												<div class="product__thumb">
+													<a class="first__img" href="single-product.php?idsach='.$row[0].'&idtl='.$row[2].'"><img src="images/books/'.$row[4].'" alt="product image"></a>
+													<a class="second__img animation1" href="single-product.php?idsach='.$row[0].'&idtl='.$row[2].'"><img src="images/books/'.$row[4].'" alt="product image"></a>
+												</div>
+												<div class="product__content content--center">
+													<h4><a href="single-product.php?idsach='.$row[0].'&idtl='.$row[2].'">'.$row[1].'</a></h4>
+													<ul class="prize d-flex">
+														<li>'.$row[3].'</li>
+													</ul>
+													<div class="action">
+														<div class="actions_inner">
+															<ul class="add_to_links">
+																<li><a href="#productmodal'.$row[0].'" data-toggle="modal"  title="Quick View" class="quickview modal-view detail-link" ><i class="bi bi-search"></i></a></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+											';			
+										}
+									?>
 		        					<!-- End Single Product -->
 									
 				</div>
