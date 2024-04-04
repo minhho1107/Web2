@@ -54,10 +54,30 @@
 									<div class="megamenu mega02">
 										<ul class="item item01">
 											<li class="title">Thể Loại</li>
-											<li><a href="#">Sách Kỹ Thuật Lập Trình </a></li>
+											<!-- <li><a href="#">Sách Kỹ Thuật Lập Trình </a></li>
 											<li><a href="#">Sách Thuật Toán và Giải Thuật </a></li>
-											<li><a href="#">Sách Tiếng Anh Chuyên Ngành </a></li>
-											<!-- TODO -->
+											<li><a href="#">Sách Tiếng Anh Chuyên Ngành </a></li> -->
+											<?php 
+												$conn = mysqli_connect("localhost","root","","webdb");
+												$sql = "select idtheloai,tentheloai from tbltheloai where HienThi = 0";			
+												mysqli_query($conn, "SET NAMES 'utf8'");
+												$result = mysqli_query($conn, $sql);
+
+
+												while ( $row = mysqli_fetch_array($result) ) {
+													// đếm số lượng sách
+													$sql2 = "select idtheloai from tblsach where idtheloai = '".$row['idtheloai']."' and HienThi = 0";			
+													mysqli_query($conn, "SET NAMES 'utf8'");
+													$result2 = mysqli_query($conn, $sql2);
+
+													echo 
+													'
+														<li><a href="shop-grid.php?idtl='.$row['idtheloai'].'&tranghientai=1">'.$row['tentheloai'].'<span> ('.mysqli_num_rows($result2).')</span></a></li>
+											
+													';			
+
+												}
+											?>
 										</ul>
 									</div>
 								</li>
@@ -77,9 +97,50 @@
 											<strong class="label switcher-label">
 												<span>Tài Khoản Của Bạn 
 													
-												<!-- TODO -->
+												<?php 
+															if (isset($_SESSION['email']))
+															{
+																$conn = mysqli_connect("localhost","root","","webdb");
+																$sql = "select hovaten from tblthongtin where email = '".$_SESSION['email']."'";			
+																mysqli_query($conn, "SET NAMES 'utf8'");
+																$result = mysqli_query($conn, $sql);
+																$row = mysqli_fetch_array($result);
+																echo $row['hovaten'];
+															}
+															else
+															{
+																echo 'người lạ';
+															}
+															
+														?>
+												</span>
 											</strong>
-											<!-- TODO -->
+											<div class="switcher-options">
+												<div class="switcher-currency-trigger">
+													<div class="setting__menu">
+														<span><a href="myaccount.php">Thông Tin Tài Khoản
+														</a></span>
+														<?php
+															function runMyFunction() {
+																session_unset();	
+															}
+															
+															if (isset($_GET['signout'])) {
+																runMyFunction();
+															}
+															if (isset($_SESSION['email']) ) {
+																echo '<span><a href="index.php?signout=true" >Đăng Xuất</a></span>';
+															}
+															else {
+																echo '
+																	<span><a href="login.php">Đăng Nhập</a></span>
+																	<span><a href="register.php">Tạo Tài Khoản</a></span>		
+																';
+															}
+														?>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -88,7 +149,54 @@
 					</div>
 				</div>		
 				<!-- Start Mobile Menu -->
-				<!-- TODO -->
+				<div class="row d-none">
+					<div class="col-lg-12 d-none">
+						<nav class="mobilemenu__nav">
+							<ul class="meninmenu">
+								<li><a href="index.php">Trang Chủ</a></li>
+								<li><a href="#">Pages</a>
+									<ul>
+										<li><a href="#">About Page</a></li>
+										<li><a href="#">Tài Khoản Của Tôi</a></li>
+										<li><a href="#">Giỏ Hàng</a></li>
+										<li><a href="#">Yêu Thích</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Thể Loại</a>
+								<ul class="item item01">
+											<li class="title">Thể Loại</li>
+											<!-- <li><a href="#">Sách Kỹ Thuật Lập Trình </a></li>
+											<li><a href="#">Sách Thuật Toán và Giải Thuật </a></li>
+											<li><a href="#">Sách Tiếng Anh Chuyên Ngành </a></li> -->
+											<?php 
+												$conn = mysqli_connect("localhost","root","","webdb");
+												$sql = "select idtheloai,tentheloai from tbltheloai where HienThi = 0";			
+												mysqli_query($conn, "SET NAMES 'utf8'");
+												$result = mysqli_query($conn, $sql);
+
+
+												while ( $row = mysqli_fetch_array($result) ) {
+													// đếm số lượng sách
+													$sql2 = "select idtheloai from tblsach where idtheloai = '".$row['idtheloai']."'";			
+													mysqli_query($conn, "SET NAMES 'utf8'");
+													$result2 = mysqli_query($conn, $sql2);
+
+													echo 
+													'
+														<li><a href="shop-grid.php?idtl='.$row['idtheloai'].'&tranghientai=1">'.$row['tentheloai'].'<span> ('.mysqli_num_rows($result2).')</span></a></li>
+											
+													';			
+
+												}
+											?>
+										</ul>
+								</li>
+								<li><a href="#">Blog</a></li>
+								<li><a href="contact.php">Liên Hệ</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
 				<!-- End Mobile Menu -->
 	            <div class="mobile-menu d-block d-lg-none">
 	            </div>
@@ -181,7 +289,7 @@
 				<!-- Sản phẩm -->
 				<div class="row">
 				<!-- Start Single Product -->
-				<?php 
+									<?php 
 										$conn = mysqli_connect("localhost","root","","webdb");
 										$sql = "select * from tblsach where HienThi = 0 ORDER BY idSach DESC LIMIT 0,4";
 										//SELECT * FROM `tblsach` ORDER BY idSach DESC LIMIT 0,4			
