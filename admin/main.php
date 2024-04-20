@@ -88,7 +88,7 @@
 
 		</div>	
 		<div class="col-md-10 col-sm-10 center">
-			<!-- <?php 
+			<?php 
 				if( isset( $_GET['act'] ) )
 					if( $_GET['act'] == 'onLeft')
 					{
@@ -108,7 +108,7 @@
 					}
 					if ( isset ( $_GET['editSanPham']))
 						include  'editSanPham.php';	
-			?> -->
+			?>
 		</div>	
 	</div>
 
