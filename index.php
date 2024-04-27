@@ -75,7 +75,7 @@
 														<li><a href="shop-grid.php?idtl='.$row['idtheloai'].'&tranghientai=1">'.$row['tentheloai'].'<span> ('.mysqli_num_rows($result2).')</span></a></li>
 											
 													';			
-
+//fdfddd
 												}
 											?>
 										</ul>
