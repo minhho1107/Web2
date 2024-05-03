@@ -23,13 +23,20 @@
 
 		  <div>
 			  <br><br><br><br>
+	<div class="col-md-2 status1">
+		<select name="selectStatus" id="selectStatus" style=" height:34px; padding-top: 6px; padding-bottom: 6px; padding-left: 12px; padding-right: 12px;">
+			<option value="0" >Đã hoàn thành</option>
+			<option value="1" >Đang xử lý</option>
+		</select>
+	</div>
 	<div class="col-md-3">  
-	<input type="text" name="from_date" id="from_date" class="form-control" placeholder="From Date" />  
+		<input type="text" name="from_date" id="from_date" class="form-control" placeholder="From Date" />  
 	</div>  
 	<div class="col-md-3">  
 		<input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" />  
 	</div>  
-	<div class="col-md-5">  
+
+	<div class="col-md-4">  
 		<input type="button" name="filter" id="filter" value="Filter" class="btn btn-info" />  
 	</div>  
 	<div style="clear:both"></div>                 

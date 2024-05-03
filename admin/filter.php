@@ -1,12 +1,20 @@
 
 <?php  
- if(isset($_POST["from_date"], $_POST["to_date"],$_POST["tableHD"]))  
+ if(isset($_POST["from_date"], $_POST["to_date"],$_POST["tableHD"],$_POST['selectStatus']))  
  {  
       $connect = mysqli_connect("localhost", "root", "", "webdb");  
       $output = '';  
+      $status = $_POST['selectStatus'];
+     if($status==0)
+          $status="Đã hoàn thành";
+     else
+          $status="Đang xử lý";
+     $status = addslashes($status);
+
       $query = "  
            SELECT * FROM tblhoadon  
-           WHERE NgayThang BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'  
+           WHERE NgayThang BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'
+           AND TinhTrang = '".$status."'
       ";  
       $result = mysqli_query($connect, $query);  
       $output .= '  

@@ -21,12 +21,13 @@
                 var tableHD=0;
                 var tableTK=0;
                 var selectRole1=$('#selectRole1').val();
+                var selectStatus=$('#selectStatus').val();
                 if(from_date != '' && to_date != '')  
                 {  
                      $.ajax({  
                           url:"filter.php",  
                           method:"POST",  
-                          data:{from_date:from_date, to_date:to_date,tableHD:tableHD},  
+                          data:{from_date:from_date, to_date:to_date,tableHD:tableHD,selectStatus:selectStatus},  
                           success:function(data)  
                           {  
                                $('#tableHD').html(data);  
