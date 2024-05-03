@@ -63,7 +63,7 @@
 								<div class="form-group">
 									<label for="inputUserName">Tên sản phẩm</label>
 									<input type="text" name="name" id="name" placeholder="Nhập tên sản phẩm" class="form-control" value="<?php echo $row[1]?>">
-								</div>
+								</div> 
 								<div class="form-group">
 									<label for="inputEmail">Loại sản phẩm</label>
 									<select name="cat_id" id="cat_id" class="form-control">
@@ -73,11 +73,12 @@
 										$sqlSelectCat = "SELECT idTheLoai,tenTheLoai FROM tbltheloai";
 										$resultCat = mysqli_query($conn ,$sqlSelectCat) or die("lỗi truy vấn danh mục"."$sqlSelectCat");
 										while ($rowCat = mysqli_fetch_array($resultCat)) {
-											
-											echo
-											'
-											<option value="'.$rowCat["idTheLoai"].'">'.$rowCat["tenTheLoai"].'</option>
-											';			
+											$selected = ($rowCat["idTheLoai"] == $cat_id) ? 'selected' : ''; // Kiểm tra xem thể loại này có trùng với thể loại của sách không
+        									echo '<option value="'.$rowCat["idTheLoai"].'" '.$selected.'>'.$rowCat["tenTheLoai"].'</option>';
+											// echo
+											// '
+											// <option value="'.$rowCat["idTheLoai"].'">'.$rowCat["tenTheLoai"].'</option>
+											// ';			
 										?>
 
 										<?php
