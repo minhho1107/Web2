@@ -41,12 +41,13 @@
 									<input type="file" name="image" id="image" >
 								</div>
 								<div class="form-group" style="float: right;">
-									<label for="inputRepeatPassword">Mô tả</label>
+									<img id="previewImage" src="" width="150">
+									<label style="margin-left: 100px;" for="inputRepeatPassword">Mô tả</label>
 									<textarea name="description" id="description" cols="50" rows="5"></textarea>
 								</div>
 								<br><br>
 								<div class="form-group" style="float: left;">
-									<label class="be-checkbox custom-control custom-checkbox"><input type="checkbox" name="status" id="status" class="custom-control-input" value="1"><span class="custom-control-label">Hiển Thị</span></label>
+									<label class="be-checkbox custom-control custom-checkbox"><input type="checkbox" name="status" id="status" class="custom-control-input" value="1"><span class="custom-control-label">Ẩn Sản Phẩm</span></label>
 								</div>
 								<div class="row" >
 									<div class="col-sm-6 pl-0"style="margin-left: 44px;" >
@@ -63,3 +64,18 @@
 		</div>
 	</div>
 </body>
+
+<script>
+    document.getElementById('image').addEventListener('change', function(event) {
+        var fileInput = event.target;
+        var files = fileInput.files;
+        if (files.length > 0) {
+            var file = files[0];
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('previewImage').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
