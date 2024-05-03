@@ -125,6 +125,15 @@
                                             </a>
                                             ';
                                             else
+											if ($i == $tranghientai)
+											echo '
+                                            <a href="main.php?act=onLeft&name=SanPham&tranghientai='.$i.'">
+                                            <div style="margin-left: 20px; width: 40px; height: 40px; border-radius: 100%; text-align: center; background-color: blue; line-height: 40px; display: inline-block;">
+                                            '.$i.'
+                                            </div>
+                                            </a>
+											';
+											else
 											echo '
                                             <a href="main.php?act=onLeft&name=SanPham&tranghientai='.$i.'">
                                             <div style="margin-left: 20px; width: 40px; height: 40px; border-radius: 100%; text-align: center; background-color: #33ccff; line-height: 40px; display: inline-block;">

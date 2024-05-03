@@ -25,7 +25,7 @@
 		  	$fileName=$_POST["fileName"];
 
 			
-			if(isset($_FILES["image"])){
+			if($_FILES["image"]["size"] > 0){
 				if ($_FILES["image"]["type"]=="image/jpeg" ||$_FILE["image"]["type"]=="image/jpg" ||$_FILES["image"]["type"]=="image/png" ||$_FILES["image"]["type"]=="image/gif") {
 						if ($_FILES["image"]["error"]==0) {
 							//Đưa file vào server
@@ -40,6 +40,7 @@
 					echo "File không đúng định dạng";
 				}
 			}else{
+
 				$fileName = $row[4];
 			}
 			
@@ -89,14 +90,18 @@
 									<input type="text" name="price" id="price" placeholder="Giá" class="form-control" value="<?php echo $row[3]?>">
 								</div>
 								<div class="form-group">
-									<input type="file" name="image" id="image" value="<?php echo $row[4]?>" placeholder="<?php echo $row[4]?>">
+									<input type="file" name="image" id="image">
+								</div>
+								<div class="form-group">
+									<img id="previewImage" src="./../images/books/<?php echo $row[4]; ?>" width="150">
 								</div>
 								<div class="form-group">
 									<label for="inputRepeatPassword">Mô tả</label>
 									<textarea name="description" id="description" cols="50" rows="10"><?php echo $row[5]?></textarea>
 								</div>
 								<div class="form-group">
-									<label class="be-checkbox custom-control custom-checkbox"><input <?php  echo $row[6]?"checked":""?> type="checkbox" name="status" id="status" class="custom-control-input" value="0"><span class="custom-control-label" >Hiển Thị</span></label>
+									<label class="be-checkbox custom-control custom-checkbox">
+									<input <?php  echo $row[6]?"checked":""?> type="checkbox" name="status" id="status" class="custom-control-input" value="0"><span class="custom-control-label" >Ẩn Sản Phẩm</span></label>
 								</div>
 								<div class="row">
 									<div class="col-sm-6 pl-0" >
@@ -112,3 +117,18 @@
 			</div>
 		</div>
 	</div>
+
+<script>
+    document.getElementById('image').addEventListener('change', function(event) {
+        var fileInput = event.target;
+        var files = fileInput.files;
+        if (files.length > 0) {
+            var file = files[0];
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('previewImage').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

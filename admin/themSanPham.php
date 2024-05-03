@@ -12,8 +12,6 @@
 		  	$price = $_POST["price"];
 		  	$description = $_POST["description"];
 
-
-
 			$fileName="";
 			if(isset($_FILES["image"])){
 				if ($_FILES["image"]["type"]=="image/jpeg" ||$_FILE["image"]["type"]=="image/jpg" ||$_FILES["image"]["type"]=="image/png" ||$_FILES["image"]["type"]=="image/gif") {
