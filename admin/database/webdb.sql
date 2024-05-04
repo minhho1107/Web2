@@ -62,19 +62,21 @@ CREATE TABLE `tblhoadon` (
   `TongTien` varchar(30) NOT NULL,
   `TinhTrang` varchar(30) NOT NULL,
   `NgayThang` date NOT NULL,
-  `Email_NhanVien` varchar(30) NOT NULL
+  `Email_NhanVien` varchar(30) NOT NULL,
+  `SDT` varchar(20) NOT NULL,
+  `DiaChi` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tblhoadon`
 --
 
-INSERT INTO `tblhoadon` (`MaHD`, `Email`, `TongTien`, `TinhTrang`, `NgayThang`, `Email_NhanVien`) VALUES
-('HD4', 'quang@gmail.com', '2300', 'Đã hoàn thành', '2024-04-30', 'nhanvien@gmail.com'),
-('HD5', 'quang@gmail.com', '75099', 'Đang xử lý', '2024-05-02', 'nhanvien@gmail.com'),
-('HDprohz@gmail.com0', 'prohz@gmail.com', '2900', 'Đã hoàn thành', '2020-06-16', 'nhanvien@gmail.com'),
-('HDprohz@gmail.com1', 'prohz@gmail.com', '1100', 'Đã hoàn thành', '2020-06-16', 'nhanvien@gmail.com'),
-('HDtangchichung@gmail.com1', 'tangchichung@gmail.com', '800', 'Đã hoàn thành', '2020-06-19', 'nhanvien@gmail.com');
+INSERT INTO `tblhoadon` (`MaHD`, `Email`, `TongTien`, `TinhTrang`, `NgayThang`, `Email_NhanVien`, `SDT`, `DiaChi`) VALUES
+('HD4', 'quang@gmail.com', '2300', 'Đã hoàn thành', '2024-04-30', 'nhanvien@gmail.com', '1321231', 'hcm'),
+('HD5', 'quang@gmail.com', '75099', 'Đang xử lý', '2024-05-02', 'nhanvien@gmail.com','1321231', 'hcm'),
+('HDprohz@gmail.com0', 'prohz@gmail.com', '2900', 'Đã hoàn thành', '2020-06-16', 'nhanvien@gmail.com','1321231', 'hcm'),
+('HDprohz@gmail.com1', 'prohz@gmail.com', '1100', 'Đã hoàn thành', '2020-06-16', 'nhanvien@gmail.com','1321231', 'hcm'),
+('HDtangchichung@gmail.com1', 'tangchichung@gmail.com', '800', 'Đã hoàn thành', '2020-06-19', 'nhanvien@gmail.com','1321231', 'hcm');
 
 -- --------------------------------------------------------
 
