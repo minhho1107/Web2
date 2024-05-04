@@ -223,7 +223,7 @@
         				<div class="contact-form-wrap">
         					<h2 class="contact__title">Giữ Liên Lạc Với Chúng Tôi</h2>
         					<p>Nhóm 
-								Tăng Chí Chung, Nguyễn Tuấn Anh và Hồ Nguyên Thành
+								Hồ Sĩ Minh, Đặng Huỳnh Như Y, Trần Minh Quân, Nguyễn Thanh Quang
 							</p>
                             <form id="contact-form" action="#" method="post">
                                 <div class="single-contact-form space-between">
@@ -252,7 +252,7 @@
         			<div class="col-lg-4 col-12 md-mt-40 sm-mt-40">
         				<div class="wn__address">
         					<h2 class="contact__title">Thông Tin Của Chúng Tôi.</h2>
-        					<p>Nguyễn Tuấn Anh from SGU with Love ♥</p>
+        					<p>Hồ Sĩ Minh from SGU with Love ♥</p>
         					<div class="wn__addres__wreapper">
 
         						<div class="single__address">
@@ -275,7 +275,7 @@
         							<i class="icon-envelope icons"></i>
         							<div class="content">
         								<span>Địa Chỉ Mail:</span>
-        								<p>nguyentuananh0325@gmail.com</p>
+        								<p>hosiminh@gmail.com</p>
         							</div>
         						</div>
 
