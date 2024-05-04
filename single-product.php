@@ -345,21 +345,7 @@
 
 
 		
-		<!-- Start Search Popup -->
-		<div class="box-search-content search_active block-bg close__top">
-			<form id="search_mini_form--2" class="minisearch" action="#">
-				<div class="field__search">
-					<input type="text" placeholder="Tìm Kiếm Thứ Bạn Muốn Ở Đây...">
-					<div class="action">
-						<a href="#"><i class="zmdi zmdi-search"></i></a>
-					</div>
-				</div>
-			</form>
-			<div class="close__wrap">
-				<span>Đóng</span>
-			</div>
-		</div>
-		<!-- End Search Popup -->
+		
 		<!-- Footer Area -->
 		<footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
 			<div class="footer-static-top">
