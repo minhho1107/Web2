@@ -279,11 +279,13 @@
 										}
 										else 
 										{
+											setlocale(LC_MONETARY, 'vi_VN');
+											$price = number_format($_SESSION['TongTien'], 0, ',', '.') . ' đ';	
 										echo 
 										'
 											<tr>
 											<td class="product-name"><a href="chitiethd.php?mahd=HD1">HD1</a></td>
-											<td class="product-subtotal">'.$_SESSION['TongTien'].'</td>
+											<td class="product-subtotal">'.$price.'</td>
 											<td class="product-quantity"><p>Chưa hoàn thành</p></td>
 										';
 										echo 
