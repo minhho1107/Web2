@@ -41,7 +41,7 @@ CREATE TABLE `tblchitiethd` (
 INSERT INTO `tblchitiethd` (`MaHD`, `idSach`, `SoLuong`, `GiaBan`) VALUES
 ('HD4', 'id8', '1', '900'),
 ('HD4', 'id9', '2', '700'),
-('HD5', '146', '2', '49.500'),
+('HD5', '146', '2', '49500'),
 ('HD5', '328', '1', '75000'),
 ('HDprohz@gmail.com0', 'id10', '1', '800'),
 ('HDprohz@gmail.com0', 'id2', '3', '500'),

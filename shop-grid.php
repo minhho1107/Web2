@@ -373,6 +373,8 @@
 										}	
 									}
 										while ( $row = mysqli_fetch_array($result) ) {
+											setlocale(LC_MONETARY, 'vi_VN');
+											$price = number_format($row[3], 0, ',', '.') . ' đ';
 											echo 
 											'
 											<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
@@ -383,7 +385,7 @@
 												<div class="product__content content--center">
 													<h4><a href="single-product.php?idsach='.$row[0].'&idtl='.$row[2].'">'.$row[1].'</a></h4>
 													<ul class="prize d-flex">
-														<li>'.$row[3].'</li>
+														<li>'.$price.'</li>
 													</ul>
 													<div class="action">
 														<div class="actions_inner">

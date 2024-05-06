@@ -17,13 +17,14 @@
 
 		if (isset($_POST["addNew"])) {
 			$name = $_POST["name"];
-		  	$status = ($_POST["status"])?$_POST["status"]:1;
+		  	$status = isset($_POST["status"])?1:0;
 		  	$id=random_int(5, 99);
 		  	$cat_id = $_POST["cat_id"];
 		  	$price = $_POST["price"];
 		  	$description = $_POST["description"];
 		  	$fileName=$_POST["fileName"];
 
+		
 			
 			if($_FILES["image"]["size"] > 0){
 				if ($_FILES["image"]["type"]=="image/jpeg" ||$_FILE["image"]["type"]=="image/jpg" ||$_FILES["image"]["type"]=="image/png" ||$_FILES["image"]["type"]=="image/gif") {
@@ -48,7 +49,7 @@
 			$sqlInsert ="UPDATE tblsach SET tensach ='$name', idTheloai='$cat_id'  ,GiaBan ='$price' ,urlHinh ='$fileName' ,thongTin ='$description' ,HienThi='$status' WHERE idSach =".$_GET["id"];
 			Mysqli_query($conn,$sqlInsert) or die("Lỗi update sản phẩm".$sqlInsert);
 			header('Location: main.php?act=onLeft&name=SanPham&tranghientai=1');
-			// echo $sqlInsert;
+			echo $sqlInsert;
 
 		}
 ?>

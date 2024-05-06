@@ -249,11 +249,13 @@
 
 											while ( $rowHoaDon = mysqli_fetch_array($resultHoaDon) ) 
 											{
+												setlocale(LC_MONETARY, 'vi_VN');
+												$price = number_format($rowHoaDon['TongTien'], 0, ',', '.') . ' đ';
 												echo 
 												'
 												<tr>
 													<td class="product-name"><a href="chitiethd.php?mahd='.$rowHoaDon['maHD'].'">'.$rowHoaDon['maHD'].'</a></td>
-													<td class="product-subtotal">'.$rowHoaDon['TongTien'].'</td>
+													<td class="product-subtotal">'.$price.'</td>
 													<td class="product-quantity"><p>'.$rowHoaDon['TinhTrang'].'</p></td>
 												';
 
