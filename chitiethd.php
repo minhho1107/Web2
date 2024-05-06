@@ -319,14 +319,18 @@ echo '<td class="product-remove"><a href="GioHang.php?mahd='.$rowCToaDon['mahd']
 												$resultSach = mysqli_query($conn, $sqlSach);
 												$rowSach = mysqli_fetch_array($resultSach);
 
+												setlocale(LC_MONETARY, 'vi_VN');
+												$price1 = number_format($rowSach['GiaBan'], 0, ',', '.') . ' đ';
+												$price2 = number_format($_SESSION['CTHD'][$i][1] * $rowSach['GiaBan'], 0, ',', '.') . ' đ';
+
 												echo 
 												'
 												<tr>
 													<td class="product-thumbnail"><a href="single-product.php?idsach='.$_SESSION['CTHD'][$i][0].'&idtl='.$rowSach['idTheLoai'].'"><img src="images/books/'.$rowSach['urlHinh'].'"></a></td>
 													<td class="product-name"><a href="single-product.php?idsach='.$_SESSION['CTHD'][$i][0].'&idtl='.$rowSach['idTheLoai'].'">'.$rowSach['tensach'].'</a></td>
-													<td class="product-price"><span class="amount">'.$rowSach['GiaBan'].'</span></td>
+													<td class="product-price"><span class="amount">'.$price1.'</span></td>
 													<td class="product-price"><span class="amount">'.$_SESSION['CTHD'][$i][1].'</span></td></td>
-													<td class="product-subtotal">'.$_SESSION['CTHD'][$i][1] * $rowSach['GiaBan'].'</td>
+													<td class="product-subtotal">'.$price2.'</td>
 													
 												';
 

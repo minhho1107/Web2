@@ -238,6 +238,8 @@
 					mysqli_query($conn, "SET NAMES 'utf8'");
 					$result1 = mysqli_query($conn, $sql1);
 					$row1 = mysqli_fetch_array($result1);
+					setlocale(LC_MONETARY, 'vi_VN');
+					$price = number_format($row[3], 0, ',', '.') . ' đ';
 					
 
 					echo '
@@ -256,7 +258,7 @@
         								<h1>'.$row[1].'</h1>
         							
         								<div class="price-box">
-        									<span>'.$row[3].'</span>
+        									<span>'.$price.'</span>
         								</div>
 										<div class="product__overview">
 											<p>'.$row[5].'</p>
