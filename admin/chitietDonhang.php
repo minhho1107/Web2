@@ -87,7 +87,7 @@
 			
 
 		</div>	
-		<div class="col-md-10 col-sm-10 center">
+		<div  class="col-md-10 col-sm-10 center">
 		<div class="table-responsive">
             <?php
                 $connection = mysqli_connect("localhost","root","","webdb");
@@ -95,6 +95,14 @@
                     $id=$_POST['edit_id'];
                     $query = "SELECT * FROM tblchitiethd WHERE MaHD='$id'";
                     $query_run = mysqli_query($connection,$query);
+
+					$query2 = "SELECT * FROM tblhoadon WHERE MaHD='$id'";
+                    $query_run2 = mysqli_query($connection,$query2);
+					$row2 = mysqli_fetch_assoc($query_run2);
+					$email = $row2['Email'];
+
+					$query1 = "SELECT * FROM tblthongtin WHERE email='$email'";
+                    $query_run1 = mysqli_query($connection,$query1);
                 }
                 
             ?>
@@ -115,6 +123,27 @@
                     {
 						$tonghd=0;
 						echo "<h3>Thông tin sản phẩm của hóa đơn ".$id." </h3>";
+						while($row1 = mysqli_fetch_assoc($query_run1)){
+							echo '
+							<div style="margin-left: -10px;" class="container dashboard-content">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-12">
+					<div class="card">
+						<h5 class="card-header">Thông tin khách hàng</h5>
+						<div class="card-body">';
+							echo "<h6> Tên hách hàng: ".$row1['hovaten']."<br>";
+							echo "Email: ".$row1['email']."<br>";
+							echo "SDT: ".$row2['SDT']."<br>";
+							echo "Địa chỉ: ".$row2['DiaChi']."<br>"."</h6>";
+							echo '
+							</div>
+				</div>
+			</div>
+		</div>
+							';
+							echo "<br>";
+
+						}
                         while($row = mysqli_fetch_assoc($query_run))
                         {
                             
