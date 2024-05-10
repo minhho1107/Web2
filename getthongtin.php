@@ -116,7 +116,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/Web2/database.php';
                         <div class="switcher-currency-trigger">
                           <div class="setting__menu">
                             <span><a href="myaccount.php">Tài Khoản Của Bạn</a></span>
-                           <span><a href="thanhtoan.php">Đơn Mua	</a></span>
+                            <span><a href="thanhtoan.php">Đơn Mua </a></span>
 
                             <span><a href="index.php?signout=true">Sign Out</a></span>
                           </div>
@@ -216,28 +216,27 @@ require $_SERVER['DOCUMENT_ROOT'] . '/Web2/database.php';
                       <th class="product-price">Giá</th>
                       <th class="product-quantity">Số Lượng</th>
                       <th class="product-subtotal">Thành Tiền</th>
-                      <th class="product-remove">Remove</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php
 
-                    $sql = mysqli_query($conn, "SELECT * FROM `tblgiohang1` WHERE `email` = '" . $_SESSION['email'] . "' AND `id` = '" . $_GET['id'] . "'");
+                    $sql = mysqli_query($conn, "SELECT * FROM `tblchitiethd` WHERE `MaHD` = '" . $_GET['id'] . "'");
+
                     $tong = 0;
                     while ($row = mysqli_fetch_array($sql)) {
-                      $getResult = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM `tblsach` WHERE `idTheLoai` = '" . $row['id_theloai'] . "' AND `idSach` = '" . $row['id_sach'] . "'"));
-                      $tong = $tong + $getResult['GiaBan'] * $row['soluong'];
+                      $getResult = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM `tblsach` WHERE `idSach` = '" . $row['idSach'] . "'"));
+                      $tong = $tong + $row['GiaBan'] * $row['SoLuong'];
 
                     ?>
                       <tr>
-                        <td class="product-thumbnail"><a href="single-product.php?idsach=id<?php echo $row['id_sach']; ?>&idtl=<?php echo $row['id_theloai']; ?>"><img src="images/books/<?php echo $getResult['urlHinh']; ?>"></a></td>
-                        <td class="product-name"><a href="single-product.php?idsach=id<?php echo $row['id_sach']; ?>&idtl=<?php echo $row['id_theloai']; ?>"><?php echo $getResult['tensach']; ?></a></td>
-                        <td class="product-price"><span class="amount"><?php echo number_format($getResult['GiaBan']); ?> đ</span></td>
-                        <td class="product-price"><span class="amount"><?php echo number_format($row['soluong']); ?></span></td>
+                        <td class="product-thumbnail"><a href="single-product.php?idsach=<?php echo $row['idSach']; ?>&idtl=<?php echo $getResult['idTheLoai']; ?>"><img src="images/books/<?php echo $getResult['urlHinh']; ?>"></a></td>
+                        <td class="product-name"><a href="single-product.php?idsach=<?php echo $row['idSach']; ?>&idtl=<?php echo $getResult['idTheLoai']; ?>"><?php echo $getResult['tensach']; ?></a></td>
+                        <td class="product-price"><span class="amount"><?php echo number_format($row['GiaBan']); ?> đ</span></td>
+                        <td class="product-price"><span class="amount"><?php echo number_format($row['SoLuong']); ?></span></td>
                         </td>
-                        <td class="product-subtotal"><?php echo number_format($getResult['GiaBan'] * $row['soluong']); ?> đ</td>
+                        <td class="product-subtotal"><?php echo number_format($row['GiaBan'] * $row['SoLuong']); ?> đ</td>
                         <!-- < -->
-                        <td class="product-remove"><a href="giohang_delete.php?id=<?php echo $row['id']; ?>">X</a></td>
                       </tr>
                     <?php } ?><!-- <tr>
                                             <td class="product-thumbnail"><a href="#"><img src="images/product/sm-3/1.jpg" alt="product img"></a></td>
