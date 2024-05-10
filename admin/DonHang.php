@@ -74,7 +74,6 @@
 		{
 			while($row = mysqli_fetch_assoc($query_run))
 			{
-				if ( $row['TinhTrang'] != 'Đang xử lý') {
 				?>
 		<tr>
 			<td><?php echo $row['MaHD']; ?></td>
@@ -94,12 +93,15 @@
 				
 				<?php 
 					if ( $row['TinhTrang'] == 'Đã hoàn thành' ) {
-						echo 'Đã hoàn thành';
+						echo
+						'
+						<button type="submit" name="check_btn2" class="btn btn-outline-success" value="'.$row['MaHD'].'" onclick="Check2(this.value)">Đã hoàn thành</button>
+						';
 					}
 					else {
 						echo
 						'
-						<button type="submit" name="check_btn" class="btn btn-outline-success" value="'.$row['MaHD'].'" onclick="Check(this.value)">Hoàn thành</button>
+						<button type="submit" name="check_btn" class="btn btn-outline-success" value="'.$row['MaHD'].'" onclick="Check(this.value)">Đang xử lý</button>
 						';
 					}
 				?>
@@ -113,7 +115,6 @@
 			
 		</tr>
 		<?php
-		}
 			}
 		}
 		else{
@@ -135,6 +136,25 @@
 			}
 		};
 		xhttp.open("GET", "getCheck.php?q="+str, true);
+		xhttp.send();
+		setTimeout(function(){
+			window.location.reload(1);
+		}, 100);
+		}
+
+		function Check2(str) {
+  			var xhttp;  
+ 			if (str == "") {
+    			document.getElementById("txtCheck").innerHTML = "";
+   				 return;
+  			}
+		xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("txtCheck").innerHTML = this.responseText;
+			}
+		};
+		xhttp.open("GET", "getCheck2.php?q="+str, true);
 		xhttp.send();
 		setTimeout(function(){
 			window.location.reload(1);
