@@ -116,7 +116,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/Web2/database.php';
 												<div class="switcher-currency-trigger">
 													<div class="setting__menu">
 														<span><a href="myaccount.php">Tài Khoản Của Bạn</a></span>
-														<span><a href="thanhtoan.php">Đơn Mua	</a></span>
+														<span><a href="thanhtoan.php">Đơn Mua </a></span>
 
 														<span><a href="index.php?signout=true">Sign Out</a></span>
 													</div>
@@ -255,8 +255,8 @@ require $_SERVER['DOCUMENT_ROOT'] . '/Web2/database.php';
 					</div>
 				</div>
 				<hr>
-				<form method="POST">
-					
+				<form method="GET" action="xu_ly_thanh_toan.php">
+
 					<div style="margin-top: 20pt;" class="form-group">
 						<label for="phone">Số Điện Thoại</label>
 						<input type="text" class="form-control" name="phone" placeholder="Nhập Số Điện Thoại">
@@ -265,21 +265,21 @@ require $_SERVER['DOCUMENT_ROOT'] . '/Web2/database.php';
 						<label for="address">Địa Chỉ</label>
 						<input type="text" class="form-control" name="address" placeholder="Nhập Địa Chỉ">
 					</div>
-
-					<!-- <input type="submit" name="addinfo" class="btn btn-primary" value="Thêm Thông Tin"></input>
+					<input type="submit" name="addinfo" class="btn btn-primary" value="Thanh toán"></input>
+					<!-- 
 					</div> -->
 				</form>
-				
 
+				<!-- 
 				<div class="row">
 					<div class="col-lg-2 offset-lg-10">
 						<div class="cartbox__total__area">
 							<div class="cart__total__amount">
-								<a href="thanhtoan.php">Thanh toán</a>
+								<a href="">Thanh toán</a>
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- </form> -->
 				<div class="row">
 					<div class="col-lg-6 offset-lg-6">
