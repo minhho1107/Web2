@@ -1,5 +1,6 @@
 # Nhóm 15
 Tên Đề tài: Web Bán sách 
+
 Thông tin thành viên:
 
 - 3120410320 - Hồ Sĩ Minh
@@ -9,3 +10,5 @@ Thông tin thành viên:
 - 3120410426 - Nguyễn Thanh Quang
 
 - 3120410439 - Trần Minh Quân
+
+  Đặng Huỳnh Như Y xin phép nghỉ ngày 11/5/2024.
