@@ -239,7 +239,14 @@ require $_SERVER['DOCUMENT_ROOT'] . '/Web2/database.php';
 
 										<div class="product_meta">
 											<span class="posted_in">Thể Loại:
-												<a href="shop-grid.php?idtl=3&tranghientai=1">Sách Tiếng Anh Chuyên Ngành</a>
+												<?php 
+												$conn = mysqli_connect("localhost","root","","webdb");
+												$sql1 = "select * from tbltheloai where idtheloai = '".$_GET['idtl']."'";			
+												mysqli_query($conn, "SET NAMES 'utf8'");
+												$result1 = mysqli_query($conn, $sql1);
+												$row1 = mysqli_fetch_array($result1);
+												echo '<a href="shop-grid.php?idtl='.$row1[0].'&tranghientai=1">'.$row1[1].'</a>' ?> 
+												
 											</span>
 										</div>
 									</div>

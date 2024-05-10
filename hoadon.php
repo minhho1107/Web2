@@ -262,7 +262,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/Web2/database.php';
 						<input type="text" class="form-control" name="phone" placeholder="Nhập Số Điện Thoại">
 					</div>
 					<div class="form-group">
-						<label for="address">Địa Chỉ</label>
+						<label for="address">Địa Chỉ Giao Hàng</label>
 						<input type="text" class="form-control" name="address" placeholder="Nhập Địa Chỉ">
 					</div>
 					<input type="submit" name="addinfo" class="btn btn-primary" value="Thanh toán"></input>

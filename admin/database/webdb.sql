@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 10, 2024 lúc 04:47 PM
+-- Thời gian đã tạo: Th5 10, 2024 lúc 05:44 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
--- Phiên bản PHP: 8.2.12
+-- Phiên bản PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,21 +40,14 @@ CREATE TABLE `tblchitiethd` (
 --
 
 INSERT INTO `tblchitiethd` (`id`, `MaHD`, `idSach`, `SoLuong`, `GiaBan`) VALUES
-(1, 'HD20240510161926', 'id8', '1', '900'),
-(2, 'HD20240510161926', '132', '1', '2'),
-(3, 'HD20240510162010', '108', '1', '38000'),
-(4, 'HD20240510162010', '146', '1', '49500'),
-(5, 'HD20240510162154', '108', '1', '38000'),
-(6, 'HD20240510162154', '132', '1', '2'),
-(7, 'HD20240510162249', '108', '1', '38000'),
-(8, 'HD20240510162249', '132', '1', '2'),
-(9, 'HD20240510162646', '108', '1', '38000'),
-(10, 'HD20240510162646', '132', '1', '2'),
-(11, 'HD20240510162939', '108', '1', '38000'),
-(12, 'HD20240510162939', '132', '1', '2'),
 (13, 'HD20240510163258', '108', '1', '38000'),
 (14, 'HD20240510164140', '146', '1', '49500'),
-(15, 'HD20240510164140', '15', '1', '100000');
+(15, 'HD20240510164140', '15', '1', '100000'),
+(16, 'HD20240510173722', '108', '1', '38000'),
+(17, 'HD20240510173722', '240', '1', '100000'),
+(18, 'HD20240510173722', '252', '1', '70000'),
+(19, 'HD20240510173826', '305', '1', '150000'),
+(20, 'HD20240510173826', '265', '1', '99000');
 
 -- --------------------------------------------------------
 
@@ -103,14 +96,10 @@ CREATE TABLE `tblhoadon` (
 --
 
 INSERT INTO `tblhoadon` (`MaHD`, `Email`, `TongTien`, `TinhTrang`, `NgayThang`, `Email_NhanVien`, `SDT`, `DiaChi`) VALUES
-('HD20240510161926', 'quang@gmail.com', '0', 'Đang xử lý', '2024-05-10', 'nhanvien@gmail.com', '0941830747', 'o'),
-('HD20240510162010', 'quang@gmail.com', '0', 'Đang xử lý', '2024-05-10', 'nhanvien@gmail.com', '094 183 07 47', 'sdsd'),
-('HD20240510162154', 'quang@gmail.com', '0', 'Đang xử lý', '2024-05-10', 'nhanvien@gmail.com', '0941830747', 'fg'),
-('HD20240510162249', 'quang@gmail.com', '0', 'Đang xử lý', '2024-05-10', 'nhanvien@gmail.com', '0941830747', 'sdsd'),
-('HD20240510162646', 'quang@gmail.com', '0', 'Đang xử lý', '2024-05-10', 'nhanvien@gmail.com', '0941830747', 'sd'),
-('HD20240510162939', 'quang@gmail.com', '38002', 'Đang xử lý', '2024-05-10', 'nhanvien@gmail.com', '(+84) 941 830 747', '63364'),
 ('HD20240510163258', 'tangchichung@gmail.com', '38000', 'Đang xử lý', '2024-05-10', 'nhanvien@gmail.com', '0941830747', 'gg'),
-('HD20240510164140', 'quang@gmail.com', '149500', 'Đang xử lý', '2024-05-10', 'nhanvien@gmail.com', 'quang', '');
+('HD20240510164140', 'quang@gmail.com', '149500', 'Đang xử lý', '2024-05-10', 'nhanvien@gmail.com', 'quang', ''),
+('HD20240510173722', 'quang@gmail.com', '208000', 'Đang xử lý', '2024-05-10', 'nhanvien@gmail.com', '0326178240', 'HCM'),
+('HD20240510173826', 'minh@gmail.com', '249000', 'Đang xử lý', '2024-05-10', 'nhanvien@gmail.com', '0326178249', 'HCM');
 
 -- --------------------------------------------------------
 
@@ -172,7 +161,6 @@ CREATE TABLE `tbltaikhoan` (
   `email` varchar(30) NOT NULL,
   `matkhau` varchar(30) NOT NULL,
   `capbac` varchar(30) NOT NULL,
-  `info` varchar(999) NOT NULL,
   `Del` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -180,15 +168,16 @@ CREATE TABLE `tbltaikhoan` (
 -- Đang đổ dữ liệu cho bảng `tbltaikhoan`
 --
 
-INSERT INTO `tbltaikhoan` (`email`, `matkhau`, `capbac`, `info`, `Del`) VALUES
-('adjj@gmail.com', '123', 'nhanvien', 'Tên: fasafs, SĐT: ấ, Địa Chỉ: ấ', 0),
-('admin@gmail.com', 'admin', 'admin', '', 0),
-('hacker@gmail.com', '123', 'khachhang', '', 1),
-('khachhang@gmail.com', 'khachhang', 'khachhang', '', 0),
-('nhanvien@gmail.com', '123', 'nhanvien', '', 0),
-('prohz@gmail.com', '123', 'khachhang', '', 0),
-('quang@gmail.com', '123', 'khachhang', 'Tên: HO SI MINH, SĐT: 0941830747, Địa Chỉ: 99 An Dương Vương, Phường 16', 0),
-('tangchichung@gmail.com', '123', 'khachhang', 'Tên: HO SI MINH, SĐT: 0941830747, Địa Chỉ: 99 An Dương Vương, Phường 16', 0);
+INSERT INTO `tbltaikhoan` (`email`, `matkhau`, `capbac`, `Del`) VALUES
+('adjj@gmail.com', '123', 'nhanvien', 0),
+('admin@gmail.com', 'admin', 'admin', 0),
+('hacker@gmail.com', '123', 'khachhang', 1),
+('khachhang@gmail.com', 'khachhang', 'khachhang', 0),
+('minh@gmail.com', '123', 'khachhang', 0),
+('nhanvien@gmail.com', '123', 'nhanvien', 0),
+('prohz@gmail.com', '123', 'khachhang', 0),
+('quang@gmail.com', '123', 'khachhang', 0),
+('tangchichung@gmail.com', '123', 'khachhang', 0);
 
 -- --------------------------------------------------------
 
@@ -234,6 +223,7 @@ INSERT INTO `tblthongtin` (`hovaten`, `email`, `goitinh`) VALUES
 ('admin', 'admin@gmail.com', 'nam'),
 ('hacker', 'hacker@gmail.com', 'nam'),
 ('khachhang', 'khachhang@gmail.com', 'nữ'),
+('Minh', 'minh@gmail.com', 'nam'),
 ('nhanvien', 'nhanvien@gmail.com', 'nam'),
 ('prohz', 'prohz@gmail.com', 'nam'),
 ('quang', 'quang@gmail.com', 'nam'),
@@ -299,13 +289,13 @@ ALTER TABLE `tblthongtin`
 -- AUTO_INCREMENT cho bảng `tblchitiethd`
 --
 ALTER TABLE `tblchitiethd`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT cho bảng `tblgiohang1`
 --
 ALTER TABLE `tblgiohang1`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
