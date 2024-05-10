@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 10, 2024 lúc 05:04 AM
+-- Thời gian đã tạo: Th5 10, 2024 lúc 04:47 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tblchitiethd` (
+  `id` int(11) UNSIGNED NOT NULL,
   `MaHD` varchar(30) NOT NULL,
   `idSach` varchar(30) NOT NULL,
   `SoLuong` varchar(30) NOT NULL,
@@ -38,18 +39,22 @@ CREATE TABLE `tblchitiethd` (
 -- Đang đổ dữ liệu cho bảng `tblchitiethd`
 --
 
-INSERT INTO `tblchitiethd` (`MaHD`, `idSach`, `SoLuong`, `GiaBan`) VALUES
-('HD4', 'id8', '1', '900'),
-('HD4', 'id9', '2', '700'),
-('HD5', '146', '2', '49500'),
-('HD5', '328', '1', '75000'),
-('HD5', 'id9', '4', '700'),
-('HDprohz@gmail.com0', 'id10', '1', '800'),
-('HDprohz@gmail.com0', 'id2', '3', '500'),
-('HDprohz@gmail.com0', 'id6', '1', '600'),
-('HDprohz@gmail.com1', 'id1', '1', '200'),
-('HDprohz@gmail.com1', 'id8', '1', '900'),
-('HDtangchichung@gmail.com1', 'id7', '1', '800');
+INSERT INTO `tblchitiethd` (`id`, `MaHD`, `idSach`, `SoLuong`, `GiaBan`) VALUES
+(1, 'HD20240510161926', 'id8', '1', '900'),
+(2, 'HD20240510161926', '132', '1', '2'),
+(3, 'HD20240510162010', '108', '1', '38000'),
+(4, 'HD20240510162010', '146', '1', '49500'),
+(5, 'HD20240510162154', '108', '1', '38000'),
+(6, 'HD20240510162154', '132', '1', '2'),
+(7, 'HD20240510162249', '108', '1', '38000'),
+(8, 'HD20240510162249', '132', '1', '2'),
+(9, 'HD20240510162646', '108', '1', '38000'),
+(10, 'HD20240510162646', '132', '1', '2'),
+(11, 'HD20240510162939', '108', '1', '38000'),
+(12, 'HD20240510162939', '132', '1', '2'),
+(13, 'HD20240510163258', '108', '1', '38000'),
+(14, 'HD20240510164140', '146', '1', '49500'),
+(15, 'HD20240510164140', '15', '1', '100000');
 
 -- --------------------------------------------------------
 
@@ -63,7 +68,6 @@ CREATE TABLE `tblgiohang1` (
   `id_theloai` int(100) NOT NULL,
   `soluong` int(100) NOT NULL,
   `id_sach` varchar(100) NOT NULL,
-  `info` varchar(999) NOT NULL,
   `status` int(100) NOT NULL,
   `time` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -72,13 +76,10 @@ CREATE TABLE `tblgiohang1` (
 -- Đang đổ dữ liệu cho bảng `tblgiohang1`
 --
 
-INSERT INTO `tblgiohang1` (`id`, `email`, `id_theloai`, `soluong`, `id_sach`, `info`, `status`, `time`) VALUES
-(11, 'prohz@gmail.com', 4, 1, '108', '', 1, 1715261084),
-(12, 'prohz@gmail.com', 4, 1, '108', '', 1, 1715261394),
-(13, 'adjj@gmail.com', 2, 1, 'id5', 'Tên: fasafs, SĐT: ấ, Địa Chỉ: ấ', 0, 1715261606),
-(17, 'quang@gmail.com', 4, 2, '108', 'Tên: HO SI MINH, SĐT: 0941830747, Địa Chỉ: 99 An Dương Vương, Phường 16', 1, 1715308142),
-(18, 'quang@gmail.com', 3, 1, '132', 'Tên: HO SI MINH, SĐT: 0941830747, Địa Chỉ: 99 An Dương Vương, Phường 16', 1, 1715308175),
-(19, 'quang@gmail.com', 3, 1, '132', 'Tên: HO SI MINH, SĐT: 0941830747, Địa Chỉ: 99 An Dương Vương, Phường 16', 1, 1715308291);
+INSERT INTO `tblgiohang1` (`id`, `email`, `id_theloai`, `soluong`, `id_sach`, `status`, `time`) VALUES
+(31, '', 4, 1, '108', 0, 1715351440),
+(32, '', 4, 1, '108', 0, 1715351447),
+(33, '', 4, 1, '108', 0, 1715351519);
 
 -- --------------------------------------------------------
 
@@ -89,8 +90,8 @@ INSERT INTO `tblgiohang1` (`id`, `email`, `id_theloai`, `soluong`, `id_sach`, `i
 CREATE TABLE `tblhoadon` (
   `MaHD` varchar(30) NOT NULL,
   `Email` varchar(30) NOT NULL,
-  `TongTien` varchar(30) NOT NULL,
-  `TinhTrang` varchar(30) NOT NULL,
+  `TongTien` varchar(30) DEFAULT NULL,
+  `TinhTrang` varchar(30) DEFAULT NULL,
   `NgayThang` date NOT NULL,
   `Email_NhanVien` varchar(30) NOT NULL,
   `SDT` varchar(20) NOT NULL,
@@ -102,11 +103,14 @@ CREATE TABLE `tblhoadon` (
 --
 
 INSERT INTO `tblhoadon` (`MaHD`, `Email`, `TongTien`, `TinhTrang`, `NgayThang`, `Email_NhanVien`, `SDT`, `DiaChi`) VALUES
-('HD4', 'quang@gmail.com', '2300', 'Đã hoàn thành', '2024-04-30', 'nhanvien@gmail.com', '1321231', 'hcm'),
-('HD5', 'quang@gmail.com', '77899', 'Đang xử lý', '2024-05-09', 'nhanvien@gmail.com', '1321231', 'hcm'),
-('HDprohz@gmail.com0', 'prohz@gmail.com', '2900', 'Đã hoàn thành', '2020-06-16', 'nhanvien@gmail.com', '1321231', 'hcm'),
-('HDprohz@gmail.com1', 'prohz@gmail.com', '1100', 'Đã hoàn thành', '2020-06-16', 'nhanvien@gmail.com', '1321231', 'hcm'),
-('HDtangchichung@gmail.com1', 'tangchichung@gmail.com', '800', 'Đã hoàn thành', '2020-06-19', 'nhanvien@gmail.com', '1321231', 'hcm');
+('HD20240510161926', 'quang@gmail.com', '0', 'Đang xử lý', '2024-05-10', 'nhanvien@gmail.com', '0941830747', 'o'),
+('HD20240510162010', 'quang@gmail.com', '0', 'Đang xử lý', '2024-05-10', 'nhanvien@gmail.com', '094 183 07 47', 'sdsd'),
+('HD20240510162154', 'quang@gmail.com', '0', 'Đang xử lý', '2024-05-10', 'nhanvien@gmail.com', '0941830747', 'fg'),
+('HD20240510162249', 'quang@gmail.com', '0', 'Đang xử lý', '2024-05-10', 'nhanvien@gmail.com', '0941830747', 'sdsd'),
+('HD20240510162646', 'quang@gmail.com', '0', 'Đang xử lý', '2024-05-10', 'nhanvien@gmail.com', '0941830747', 'sd'),
+('HD20240510162939', 'quang@gmail.com', '38002', 'Đang xử lý', '2024-05-10', 'nhanvien@gmail.com', '(+84) 941 830 747', '63364'),
+('HD20240510163258', 'tangchichung@gmail.com', '38000', 'Đang xử lý', '2024-05-10', 'nhanvien@gmail.com', '0941830747', 'gg'),
+('HD20240510164140', 'quang@gmail.com', '149500', 'Đang xử lý', '2024-05-10', 'nhanvien@gmail.com', 'quang', '');
 
 -- --------------------------------------------------------
 
@@ -138,10 +142,12 @@ INSERT INTO `tblsach` (`idSach`, `tensach`, `idTheLoai`, `GiaBan`, `urlHinh`, `T
 ('265', 'Thất Lạc Cõi Người ', '5', '99000', 'that-lac-coi-nguoi-tb-2020_eni3-k1.jpg', 'Thất Lạc Cõi Người là một tác phẩm kinh điển nổi tiếng của văn học Nhật Bản hiện đại và là cuốn tiểu thuyết cuối cùng của Dazai Osamu. Thất Lạc Cõi Người mang nhiều nét tự thuật, là một tiểu thuyết tự', 0),
 ('305', 'Neon Genesis Evangelion - Coll', '4', '150000', '8935278602361_1.jpg', 'Neon Genesis Evangelion - Collector’s Edition - Tập 1\r\nNăm 2000, thiên thạch đã rơi xuống Nam Cực, kéo theo thảm họa chưa từng thấy trong lịch sử nhân loại - “Chấn động thứ hai”. Mực nước biển dâng, t', 0),
 ('328', 'Solo Leveling - Tôi Thăng Cấp ', '4', '75000', 'solo-leveling-toi-thang-cap-mot-minh-tap-9-3.jpg', 'Trong Tập 9 của Solo Leveling, chúng ta tiếp tục theo chân THỢ SĂN SUNG JIN WOO - một anh chàng thợ săn tài ba với khả năng thăng cấp đáng kinh ngạc. Trước khi kiểm tra lại thứ hạng, Sung Jin Woo quyế', 1),
+('337', 'HO SI MINH', '1', '123', 'z4413432803417_ce209a80e12e7ea64dd563db94f6819c.jpg', '231231', 1),
 ('355', 'Đường Mòn Muôn Nẻo', '5', '150000', 'duong-mon-muon-neo.jpg', 'Cuốn sách là một cuộc phiêu lưu ngoạn mục khám phá mạng lưới những con đường trên khắp hành tinh, từ con đường của loài kiến, dấu chân của người tiền sử, đến kỷ nguyên kỹ thuật số. Thông qua câu chuyệ', 0),
 ('366', 'Hạ Đỏ', '5', '120000', 'ha-do-ban-dac-biet.jpg', 'Mùa hè năm đó, Chương được bố mẹ cho về quê chơi. Ở đây, cậu được biết đến những trò chơi thú vị cùng hai đứa em con nhà dì của mình, những trò chơi mà Chương chẳng thể kiếm ở đâu được khi còn sống ở ', 1),
 ('42', 'Còn Chút Gì Để Nhớ', '5', '120000', 'con-chut-gi-de-nho-db.jpg', 'Đó là những kỷ niệm thời đi học của Chương, lúc mới bước chân vào Sài Gòn và làm quen với cuộc sống đô thị. Là những mối quan hệ bạn bè tưởng chừng hời hợt thoảng qua nhưng gắn bó suốt cuộc đời. Cuộc ', 1),
 ('422', 'Ma Pháp Thiếu Nữ Madoka Magica', '4', '120000', 'boxset-ma-phap-thieu-nu-madoka-magica-cuoc-phan-nghich-3.jpg', 'rong cuộc sống trở về quỹ đạo \"bình thường\" của thế giới Ma Nữ, Akemi Homura đã phát hiện ra điều bất thường đang diễn ra. Những gì mà thế giới này cho rằng là \"cân bằng\" có thể chỉ là một cái kết, ho', 0),
+('424', 'sách', '1', '', '', '', 0),
 ('440', 'Chú Bé Rắc Rối ', '5', '120000', 'chu-be-rac-roi-ban-db.jpg', 'Chú bé rắc rối là câu chuyện về đôi bạn “cùng tiến” An và Nghi. Nghi học giỏi và là một tấm gương sáng bao nhiêu thì An lại ham chơi và lười học bấy nhiêu, và những câu chuyện tréo ngoe bắt đầu xảy ra', 0),
 ('470', 'Đuổi Theo Ánh Sáng', '5', '200000', 'duoi-theo-anh-sang.jpg', 'Quyển hồi ký Đuổi theo ánh sáng của đạo diễn kiêm nhà biên kịch đoạt giải Oscar Oliver Stone đã khắc họa từ tuổi thơ phức tạp ở New York, đến thời gian tại ngũ ở miền Nam Việt Nam, và những nỗ lực cùn', 0),
 ('52', 'Kỹ Thuật Nâng Cao', '1', '1000', 'tokill.jpg', 'aaaaaaaaaaaaa\r\n', 0),
@@ -166,6 +172,7 @@ CREATE TABLE `tbltaikhoan` (
   `email` varchar(30) NOT NULL,
   `matkhau` varchar(30) NOT NULL,
   `capbac` varchar(30) NOT NULL,
+  `info` varchar(999) NOT NULL,
   `Del` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -173,15 +180,15 @@ CREATE TABLE `tbltaikhoan` (
 -- Đang đổ dữ liệu cho bảng `tbltaikhoan`
 --
 
-INSERT INTO `tbltaikhoan` (`email`, `matkhau`, `capbac`, `Del`) VALUES
-('adjj@gmail.com', '123', 'nhanvien', 0),
-('admin@gmail.com', 'admin', 'admin', 0),
-('hacker@gmail.com', '123', 'khachhang', 1),
-('khachhang@gmail.com', 'khachhang', 'khachhang',  0),
-('nhanvien@gmail.com', '123', 'nhanvien',  0),
-('prohz@gmail.com', '123', 'khachhang', 0),
-('quang@gmail.com', '123', 'khachhang',  0),
-('tangchichung@gmail.com', '123', 'khachhang', 0);
+INSERT INTO `tbltaikhoan` (`email`, `matkhau`, `capbac`, `info`, `Del`) VALUES
+('adjj@gmail.com', '123', 'nhanvien', 'Tên: fasafs, SĐT: ấ, Địa Chỉ: ấ', 0),
+('admin@gmail.com', 'admin', 'admin', '', 0),
+('hacker@gmail.com', '123', 'khachhang', '', 1),
+('khachhang@gmail.com', 'khachhang', 'khachhang', '', 0),
+('nhanvien@gmail.com', '123', 'nhanvien', '', 0),
+('prohz@gmail.com', '123', 'khachhang', '', 0),
+('quang@gmail.com', '123', 'khachhang', 'Tên: HO SI MINH, SĐT: 0941830747, Địa Chỉ: 99 An Dương Vương, Phường 16', 0),
+('tangchichung@gmail.com', '123', 'khachhang', 'Tên: HO SI MINH, SĐT: 0941830747, Địa Chỉ: 99 An Dương Vương, Phường 16', 0);
 
 -- --------------------------------------------------------
 
@@ -230,7 +237,8 @@ INSERT INTO `tblthongtin` (`hovaten`, `email`, `goitinh`) VALUES
 ('nhanvien', 'nhanvien@gmail.com', 'nam'),
 ('prohz', 'prohz@gmail.com', 'nam'),
 ('quang', 'quang@gmail.com', 'nam'),
-('admin', 'tangchichung@gmail.com', 'nam');
+('admin', 'tangchichung@gmail.com', 'nam'),
+('y đặng', 'y@gmail.com', 'nam');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -240,7 +248,7 @@ INSERT INTO `tblthongtin` (`hovaten`, `email`, `goitinh`) VALUES
 -- Chỉ mục cho bảng `tblchitiethd`
 --
 ALTER TABLE `tblchitiethd`
-  ADD PRIMARY KEY (`MaHD`,`idSach`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `FKCTHDISSACH` (`idSach`),
   ADD KEY `FKCTHDMAHD` (`MaHD`);
 
@@ -288,10 +296,16 @@ ALTER TABLE `tblthongtin`
 --
 
 --
+-- AUTO_INCREMENT cho bảng `tblchitiethd`
+--
+ALTER TABLE `tblchitiethd`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT cho bảng `tblgiohang1`
 --
 ALTER TABLE `tblgiohang1`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
