@@ -166,7 +166,6 @@ CREATE TABLE `tbltaikhoan` (
   `email` varchar(30) NOT NULL,
   `matkhau` varchar(30) NOT NULL,
   `capbac` varchar(30) NOT NULL,
-  `info` varchar(999) NOT NULL,
   `Del` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -174,15 +173,15 @@ CREATE TABLE `tbltaikhoan` (
 -- Đang đổ dữ liệu cho bảng `tbltaikhoan`
 --
 
-INSERT INTO `tbltaikhoan` (`email`, `matkhau`, `capbac`, `info`, `Del`) VALUES
-('adjj@gmail.com', '123', 'nhanvien', 'Tên: fasafs, SĐT: ấ, Địa Chỉ: ấ', 0),
-('admin@gmail.com', 'admin', 'admin', '', 0),
-('hacker@gmail.com', '123', 'khachhang', '', 1),
-('khachhang@gmail.com', 'khachhang', 'khachhang', '', 0),
-('nhanvien@gmail.com', '123', 'nhanvien', '', 0),
-('prohz@gmail.com', '123', 'khachhang', '', 0),
-('quang@gmail.com', '123', 'khachhang', 'Tên: HO SI MINH, SĐT: 0941830747, Địa Chỉ: 99 An Dương Vương, Phường 16', 0),
-('tangchichung@gmail.com', '123', 'khachhang', '', 0);
+INSERT INTO `tbltaikhoan` (`email`, `matkhau`, `capbac`, `Del`) VALUES
+('adjj@gmail.com', '123', 'nhanvien', 0),
+('admin@gmail.com', 'admin', 'admin', 0),
+('hacker@gmail.com', '123', 'khachhang', 1),
+('khachhang@gmail.com', 'khachhang', 'khachhang',  0),
+('nhanvien@gmail.com', '123', 'nhanvien',  0),
+('prohz@gmail.com', '123', 'khachhang', 0),
+('quang@gmail.com', '123', 'khachhang',  0),
+('tangchichung@gmail.com', '123', 'khachhang', 0);
 
 -- --------------------------------------------------------
 

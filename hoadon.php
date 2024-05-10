@@ -256,12 +256,8 @@ require $_SERVER['DOCUMENT_ROOT'] . '/Web2/database.php';
 				</div>
 				<hr>
 				<form method="POST">
-					<div class="form-group">
-						<label for="name">Tên Khách Hàng</label>
-						<input type="text" name="name" class="form-control" placeholder="Nhập Tên Khách Hàng">
-						<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-					</div>
-					<div class="form-group">
+					
+					<div style="margin-top: 20pt;" class="form-group">
 						<label for="phone">Số Điện Thoại</label>
 						<input type="text" class="form-control" name="phone" placeholder="Nhập Số Điện Thoại">
 					</div>
@@ -270,45 +266,10 @@ require $_SERVER['DOCUMENT_ROOT'] . '/Web2/database.php';
 						<input type="text" class="form-control" name="address" placeholder="Nhập Địa Chỉ">
 					</div>
 
-					<input type="submit" name="addinfo" class="btn btn-primary" value="Thêm Thông Tin"></input>
-					<!-- </div> -->
+					<!-- <input type="submit" name="addinfo" class="btn btn-primary" value="Thêm Thông Tin"></input>
+					</div> -->
 				</form>
-				<?php
-				$users = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `tbltaikhoan` WHERE `email` = '" . $_SESSION['email'] . "'"));
-				if (isset($_POST['addinfo'])) {
-					if (!empty($_POST['name']) and !empty($_POST['phone']) and !empty($_POST['address'])) {
-						$name = $_POST['name'];
-						$phone = $_POST['phone'];
-						$address = $_POST['address'];
-						$tongtt = "Tên: " . $name . ", SĐT: " . $phone . ", Địa Chỉ: " . $address;
-						if (empty($_SESSION['email'])) {
-				?>
-							<script>
-								alert("Bạn Cần Đăng Nhập!");
-							</script>
-						<?php
-						} else {
-
-							mysqli_query($conn, "UPDATE `tbltaikhoan` SET `info` = '" . $tongtt . "' WHERE `tbltaikhoan`.`email` = '" . $_SESSION['email'] . "'");
-						?>
-							<script>
-								alert("Cập Nhật Thông Tin Thành Công!");
-							</script>
-							<meta http-equiv="refresh" content="1">
-						<?php
-							// cap nhat tt thanh cong
-						}
-					} else {
-						?>
-						<script>
-							alert("Vui Lòng Nhập Đầy Đủ Thông Tin!");
-						</script>
-				<?php
-						// vui long nhap day du tt
-					}
-				}
-
-				?>
+				
 
 				<div class="row">
 					<div class="col-lg-2 offset-lg-10">
