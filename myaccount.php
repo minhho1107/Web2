@@ -117,6 +117,8 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['matkhau'])) {
 																runMyFunction();
 															}
 															if (isset($_SESSION['email']) ) {
+																echo '<span><a href="thanhtoan.php">Đơn Mua	</a></span>';
+
 																echo '<span><a href="index.php?signout=true" >Sign Out</a></span>';
 															}
 															else {

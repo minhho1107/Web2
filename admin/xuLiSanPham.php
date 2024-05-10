@@ -76,7 +76,10 @@
 										<td><?php echo $row["idSach"]; ?></td>
 										<td><?php echo $row["tensach"] ?></td>
 										<td><?php echo $rowTL["tenTheLoai"] ?></td>
-										<td><?php echo $row["GiaBan"] ?></td>
+										<td><?php 
+										setlocale(LC_MONETARY, 'vi_VN');
+										$price = number_format($row['GiaBan'], 0, ',', '.') . ' đ';
+										echo $price	 ?></td>
 										<td>
 											<?php
 											echo 

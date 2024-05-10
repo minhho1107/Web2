@@ -1,5 +1,5 @@
 ﻿<?php
-require $_SERVER['DOCUMENT_ROOT'] . '/database.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/Web2/database.php';
 ?>
 
 <!doctype html>
@@ -116,6 +116,8 @@ require $_SERVER['DOCUMENT_ROOT'] . '/database.php';
 												<div class="switcher-currency-trigger">
 													<div class="setting__menu">
 														<span><a href="myaccount.php">Tài Khoản Của Bạn</a></span>
+														<span><a href="thanhtoan.php">Đơn Mua	</a></span>
+
 														<span><a href="index.php?signout=true">Sign Out</a></span>
 													</div>
 												</div>

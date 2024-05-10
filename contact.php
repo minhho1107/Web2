@@ -1,4 +1,11 @@
-
+<?php
+session_start();
+if (!isset($_SESSION['email']) && !isset($_SESSION['matkhau'])) {
+    header('location: login.php');
+}
+									
+ 
+ ?>
 
 <head>
 	<meta charset="utf-8">
@@ -111,6 +118,8 @@
 																runMyFunction();
 															}
 															if (isset($_SESSION['email']) ) {
+																echo '<span><a href="thanhtoan.php">Đơn Mua	</a></span>';
+
 																echo '<span><a href="index.php?signout=true" >Sign Out</a></span>';
 															}
 															else {

@@ -146,28 +146,36 @@
 						}
                         while($row = mysqli_fetch_assoc($query_run))
                         {
-                            
+						setlocale(LC_MONETARY, 'vi_VN');
+						$price1 = number_format($row['GiaBan'], 0, ',', '.') . ' đ';
+						$price2 = number_format($row['SoLuong']*$row['GiaBan'], 0, ',', '.') . ' đ';
+
+						 
 					 ?>
 					 <tr>
                         <td><?php echo $row['MaHD']; ?></td>
                         <td><?php echo $row['idSach']; ?></td>
                         <td><?php echo $row['SoLuong']; ?></td>
-                        <td><?php echo $row['GiaBan']; ?></td>
+                        <td><?php echo $price1; ?></td>
 						<?php $thanhtien=$row['SoLuong']*$row['GiaBan'];
 							$tonghd=$tonghd+$thanhtien;
 						?>
-						<td><?php echo $thanhtien;?> </td>
+						<td><?php
+						$price2 = number_format($thanhtien, 0, ',', '.') . ' đ';
+						 echo $price2;?> </td>
 
                         
                         
                     </tr>
                     <?php
 						}
+						$price3 = number_format($tonghd, 0, ',', '.') . ' đ';
+
 						echo '
 						<tr>
 							<td colspan="4"></td>
 							
-							<td>'.$tonghd.'</td>
+							<td>'.$price3.'</td>
 						</tr>
 						';
                     }

@@ -140,6 +140,7 @@ else
 												<div class="switcher-currency-trigger">
 													<div class="setting__menu">
 														<span><a href="myaccount.php">Tài Khoản Của Bạn</a></span>
+
 														<?php
 															function runMyFunction() {
 																session_unset();	
@@ -149,6 +150,9 @@ else
 																runMyFunction();
 															}
 															if (isset($_SESSION['email']) ) {
+																echo '<span><a href="thanhtoan.php">Đơn Mua	</a></span>';
+
+			
 																echo '<span><a href="index.php?signout=true" >Sign Out</a></span>';
 															}
 															else {

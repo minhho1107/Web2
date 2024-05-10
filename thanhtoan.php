@@ -1,5 +1,5 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/database.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/Web2/database.php';
 $users = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `tbltaikhoan` WHERE `email` = '" . $_SESSION['email'] . "'"));
 if (empty($users['info'])) {
   // echo 'chua log';

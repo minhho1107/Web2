@@ -98,7 +98,10 @@
 			<td><?php echo $row['MaHD']; ?></td>
 			<td><?php echo $row['Email']; ?></td>
 			<td><?php echo $row['Email_NhanVien']?></td>
-			<td><?php echo $row['TongTien']; ?></td>
+			<td><?php 
+			setlocale(LC_MONETARY, 'vi_VN');
+			$price = number_format($row['TongTien'], 0, ',', '.') . ' đ';
+			echo $price; ?></td>
 			<td><?php echo $row['NgayThang'];?></td>
 		</tr>
 		<?php

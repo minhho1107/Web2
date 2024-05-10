@@ -85,7 +85,10 @@
 				else
 					echo '<td>'.$row['Email_NhanVien'].'</td>';
 			?>
-			<td><?php echo $row['TongTien']; ?></td>
+			<td><?php
+			setlocale(LC_MONETARY, 'vi_VN');
+			$price = number_format($row['TongTien'], 0, ',', '.') . ' đ';
+			echo $price; ?></td>
 			
 			<td>
 				
