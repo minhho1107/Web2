@@ -1,5 +1,10 @@
-﻿<!doctype html>
+﻿<?php
+require $_SERVER['DOCUMENT_ROOT'] . '/database.php';
+?>
+
+<!doctype html>
 <html class="no-js" lang="zxx">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -12,7 +17,7 @@
 	<link rel="apple-touch-icon" href="images/icon.png">
 
 	<!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,600i,700,700i,800" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
 
@@ -22,27 +27,20 @@
 	<link rel="stylesheet" href="style.css">
 
 	<!-- Cusom css -->
-   <link rel="stylesheet" href="css/custom.css">
+	<link rel="stylesheet" href="css/custom.css">
 
 	<!-- Modernizer js -->
 	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
 </head>
+
 <body>
-	<?php session_start(); 
-
-		if (isset($_SESSION['email']) || isset($_SESSION['CTHD']))
-			echo "";
-		else 
-			header("location: login.php?yeucau");	
-
-	?>
 	<!--[if lte IE 9]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 	<![endif]-->
 
 	<!-- Main wrapper -->
 	<div class="wrapper" id="wrapper">
-		
+
 		<!-- Header -->
 		<header id="wn__header" class="header__area header__absolute sticky__header">
 			<div class="container-fluid">
@@ -66,29 +64,37 @@
 											<!-- <li><a href="#">Sách Kỹ Thuật Lập Trình </a></li>
 											<li><a href="#">Sách Thuật Toán và Giải Thuật </a></li>
 											<li><a href="#">Sách Tiếng Anh Chuyên Ngành </a></li> -->
-											<?php 
-												$conn = mysqli_connect("localhost","root","","webdb");
-												$sql = "select idtheloai,tentheloai from tbltheloai where HienThi = 0";			
-												mysqli_query($conn, "SET NAMES 'utf8'");
-												$result = mysqli_query($conn, $sql);
+
+											<li><a href="shop-grid.php?idtl=1&tranghientai=1">Sách Kỹ Thuật Lập Trình<span> (5)</span></a></li>
 
 
-												while ( $row = mysqli_fetch_array($result) ) {
-													// đếm số lượng sách
-													$sql2 = "select idtheloai from tblsach where idtheloai = '".$row['idtheloai']."'";			
-													mysqli_query($conn, "SET NAMES 'utf8'");
-													$result2 = mysqli_query($conn, $sql2);
+											<li><a href="shop-grid.php?idtl=2&tranghientai=1">Sách Thuật Toán Và Giải Thuật<span> (2)</span></a></li>
 
-													echo 
-													'
-														<li><a href="shop-grid.php?idtl='.$row['idtheloai'].'&tranghientai=1">'.$row['tentheloai'].'<span> ('.mysqli_num_rows($result2).')</span></a></li>
-											
-													';			
 
-												}
-											?>
+											<li><a href="shop-grid.php?idtl=3&tranghientai=1">Sách Tiếng Anh Chuyên Ngành<span> (5)</span></a></li>
+
+
+											<li><a href="shop-grid.php?idtl=4&tranghientai=1">Manga - Comic<span> (8)</span></a></li>
+
+
+											<li><a href="shop-grid.php?idtl=5&tranghientai=1">Văn học<span> (6)</span></a></li>
+
 										</ul>
+										<!-- <ul class="item item02">
+											<li class="title">Ngôn NGữ</li>
+											<li><a href="#">Tiếng Việt </a></li>
+											<li><a href="#">Tiếng Anh </a></li>
+											<li><a href="#">Việt Sub </a></li>
+										</ul>
+										<ul class="item item02">
+											<li class="title">Gợi ý</li>
+											<li><a href="#">Sách Bán Chạy</a></li>
+											<li><a href="#">Sách Cổ Điển </a></li>
+											<li><a href="#">Sách Cơ Bản</a></li>
+										</ul> -->
 									</div>
+								</li>
+								<li class="drop"><a href="#">Blog</a>
 								</li>
 								<li><a href="contact.php">Liên Hệ</a></li>
 							</ul>
@@ -110,24 +116,7 @@
 												<div class="switcher-currency-trigger">
 													<div class="setting__menu">
 														<span><a href="myaccount.php">Tài Khoản Của Bạn</a></span>
-														<?php
-															function runMyFunction() {
-																session_unset();	
-															}
-															
-															if (isset($_GET['signout'])) {
-																runMyFunction();
-															}
-															if (isset($_SESSION['email']) ) {
-																echo '<span><a href="index.php?signout=true" >Sign Out</a></span>';
-															}
-															else {
-																echo '
-																	<span><a href="login.php">Đăng Nhập</a></span>
-																	<span><a href="register.php">Tạo Tài Khoản</a></span>		
-																';
-															}
-														?>
+														<span><a href="index.php?signout=true">Sign Out</a></span>
 													</div>
 												</div>
 											</div>
@@ -137,7 +126,7 @@
 							</li>
 						</ul>
 					</div>
-				</div>		
+				</div>
 				<!-- Start Mobile Menu -->
 				<div class="row d-none">
 					<div class="col-lg-12 d-none">
@@ -153,34 +142,25 @@
 									</ul>
 								</li>
 								<li><a href="#">Thể Loại</a>
-								<ul class="item item01">
-											<li class="title">Thể Loại</li>
-											<!-- <li><a href="#">Sách Kỹ Thuật Lập Trình </a></li>
-											<li><a href="#">Sách Thuật Toán và Giải Thuật </a></li>
-											<li><a href="#">Sách Tiếng Anh Chuyên Ngành </a></li> -->
-											<?php 
-												$conn = mysqli_connect("localhost","root","","webdb");
-												$sql = "select idtheloai,tentheloai from tbltheloai where HienThi = 0";			
-												mysqli_query($conn, "SET NAMES 'utf8'");
-												$result = mysqli_query($conn, $sql);
-
-
-												while ( $row = mysqli_fetch_array($result) ) {
-													// đếm số lượng sách
-													$sql2 = "select idtheloai from tblsach where idtheloai = '".$row['idtheloai']."'";			
-													mysqli_query($conn, "SET NAMES 'utf8'");
-													$result2 = mysqli_query($conn, $sql2);
-
-													echo 
-													'
-														<li><a href="shop-grid.php?idtl='.$row['idtheloai'].'&tranghientai=1">'.$row['tentheloai'].'<span> ('.mysqli_num_rows($result2).')</span></a></li>
-											
-													';			
-
-												}
-											?>
-										</ul>
+									<ul>
+										<li><a href="#">Sách Kỹ Thuật Lập Trình </a></li>
+										<li><a href="#">Sách Thuật Toán và Giải Thuật </a></li>
+										<li><a href="#">Sách Tiếng Anh Chuyên Ngành </a></li>
+									</ul>
 								</li>
+								<li><a href="#">Ngôn NGữ</a>
+									<ul>
+										<li><a href="#">Tiếng Việt </a></li>
+										<li><a href="#">Tiếng Anh </a></li>
+										<li><a href="#">Việt Sub </a></li>
+									</ul>
+								</li>
+								<li><a href="#">Gợi ý</a>
+									<ul>
+										<li><a href="#">Sách Bán Chạy</a></li>
+										<li><a href="#">Sách Cổ Điển </a></li>
+										<li><a href="#">Sách Cơ Bản</a></li>
+									</ul>
 								<li><a href="#">Blog</a></li>
 								<li><a href="contact.php">Liên Hệ</a></li>
 							</ul>
@@ -188,10 +168,10 @@
 					</div>
 				</div>
 				<!-- End Mobile Menu -->
-	            <div class="mobile-menu d-block d-lg-none">
-	            </div>
-	            <!-- Mobile Menu -->	
-			</div>		
+				<div class="mobile-menu d-block d-lg-none">
+				</div>
+				<!-- Mobile Menu -->
+			</div>
 		</header>
 		<!-- //Header -->
 		<!-- Start Search Popup -->
@@ -199,10 +179,9 @@
 			<form name="fr" action="shop-grid.php" id="search_mini_form" class="minisearch" action="">
 				<div class="field__search">
 					<input name="timkiem" type="text" placeholder="Tìm Kiếm Thứ Bạn Muốn Ở Đây...">
-						<div class="action">
-							<button type="submit">Seacrh</button>
-						</div>
-					<input type="hidden" name="tranghientai" value="1">	
+					<div class="action">
+						<button type="submit" name="submit">Seacrh</button>
+					</div>
 				</div>
 			</form>
 			<div class="close__wrap">
@@ -210,10 +189,9 @@
 			</div>
 		</div>
 		<!-- End Search Popup -->
-        <!-- Start Bradcaump area -->
-        <br><br><br>
+		<!-- Start Bradcaump area -->
+		<br><br><br>
 		<!-- End Bradcaump area -->
-		
 
 
 
@@ -221,168 +199,207 @@
 
 
 
-        <!-- cart-main-area start -->
-        <div class="cart-main-area section-padding--lg bg--white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 ol-lg-12">
-                        <form action="#">               
-                            <div class="table-content wnro__table table-responsive">
-                                <table>
-                                    <thead>
-                                        <tr class="title-top">
-                                            <th class="product-name">Mã Hóa Đơn</th>
-                                            <th class="product-subtotal">Tổng Tiền</th>
-                                            <th class="product-quantity">Tình Trạng</th>
-                                            <th class="product-remove">Remove</th>
-                                            <th class="product-name">Chi Tiết Hóa Đơn</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+		<!-- cart-main-area start -->
+		<div class="cart-main-area section-padding--lg bg--white">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 ol-lg-12">
+						<form action="#">
+							<div class="table-content wnro__table table-responsive">
+								<table>
+									<thead>
+										<tr class="title-top">
+											<th class="product-thumbnail">Hình Ảnh</th>
+											<th class="product-name">Sản Phẩm</th>
+											<th class="product-price">Giá</th>
+											<th class="product-quantity">Số Lượng</th>
+											<th class="product-subtotal">Thành Tiền</th>
+											<th class="product-remove">Remove</th>
+										</tr>
+									</thead>
+									<tbody>
 										<?php
-										if (isset($_SESSION['email']))
-											{
-											$email = $_SESSION['email'];
-											$conn = mysqli_connect("localhost","root","","webdb");
-											$sqlHoaDon = "select maHD,email,TongTien,TinhTrang from tblhoadon where email = '".$email."'";
-											$resultHoaDon = mysqli_query($conn, $sqlHoaDon);
+										$sql = mysqli_query($conn, "SELECT * FROM `tblgiohang1` WHERE `email` = '" . $_SESSION['email'] . "'");
+										$tong = 0;
+										while ($row = mysqli_fetch_array($sql)) {
+											$getResult = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM `tblsach` WHERE `idTheLoai` = '" . $row['id_theloai'] . "' AND `idSach` = '" . $row['id_sach'] . "'"));
+											$tong = $tong + $getResult['GiaBan'] * $row['soluong'];
 
-											while ( $rowHoaDon = mysqli_fetch_array($resultHoaDon) ) 
-											{
-												setlocale(LC_MONETARY, 'vi_VN');
-												$price = number_format($rowHoaDon['TongTien'], 0, ',', '.') . ' đ';
-												echo 
-												'
-												<tr>
-													<td class="product-name"><a href="chitiethd.php?mahd='.$rowHoaDon['maHD'].'">'.$rowHoaDon['maHD'].'</a></td>
-													<td class="product-subtotal">'.$price.'</td>
-													<td class="product-quantity"><p>'.$rowHoaDon['TinhTrang'].'</p></td>
-												';
-
-												if ( $rowHoaDon['TinhTrang'] == 'Đang xử lý' ) 
-													echo 
-													'
-													<td class="product-remove"><a href="GioHang.php?xoahoadon=true&mahd='.$rowHoaDon['maHD'].'">X</a></td>
-													';
-												else 
-													echo 
-													'
-													<td class="product-remove"></td>
-													';
-												echo 
-												'
-												<td class="product-name"><a href="chitiethd.php?mahd='.$rowHoaDon['maHD'].'">Hóa Đơn '.$rowHoaDon['maHD'].'</a></td>
-												</tr>
-												
-												';	
-											}
-										}
-										else 
-										{
-											setlocale(LC_MONETARY, 'vi_VN');
-											$price = number_format($_SESSION['TongTien'], 0, ',', '.') . ' đ';	
-										echo 
-										'
-											<tr>
-											<td class="product-name"><a href="chitiethd.php?mahd=HD1">HD1</a></td>
-											<td class="product-subtotal">'.$price.'</td>
-											<td class="product-quantity"><p>Chưa hoàn thành</p></td>
-										';
-										echo 
-											'
-											<td class="product-remove"><a href="GioHang_Session.php?xoahoadon=true">X</a></td>
-											<td class="product-name"><a href="chitiethd.php?mahd=HD1">Hóa Đơn HD1</a></td>
-											</tr>
-											';			
-										}
 										?>
-                                        <!-- <tr>
+											<tr>
+												<td class="product-thumbnail"><a href="single-product.php?idsach=id<?php echo $row['id_sach']; ?>&idtl=<?php echo $row['id_theloai']; ?>"><img src="images/books/<?php echo $getResult['urlHinh']; ?>"></a></td>
+												<td class="product-name"><a href="single-product.php?idsach=id<?php echo $row['id_sach']; ?>&idtl=<?php echo $row['id_theloai']; ?>"><?php echo $getResult['tensach']; ?></a></td>
+												<td class="product-price"><span class="amount"><?php echo number_format($getResult['GiaBan']); ?> đ</span></td>
+												<td class="product-price"><span class="amount"><?php echo number_format($row['soluong']); ?></span></td>
+												</td>
+												<td class="product-subtotal"><?php echo number_format($getResult['GiaBan'] * $row['soluong']); ?> đ</td>
+												<!-- < -->
+												<td class="product-remove"><a href="giohang_delete.php?id=<?php echo $row['id']; ?>">X</a></td>
+											</tr>
+										<?php } ?><!-- <tr>
+                                            <td class="product-thumbnail"><a href="#"><img src="images/product/sm-3/1.jpg" alt="product img"></a></td>
                                             <td class="product-name"><a href="#">Natoque penatibus</a></td>
+                                            <td class="product-price"><span class="amount">$165.00</span></td>
+                                            <td class="product-quantity"><input type="number" value="1"></td>
                                             <td class="product-subtotal">$165.00</td>
-                                            <td class="product-quantity"><p>1</p></td>
                                             <td class="product-remove"><a href="#">X</a></td>
                                         </tr> -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </form> 
-                    </div>
-                </div>
-            </div>  
-        </div>
+									</tbody>
+								</table>
+							</div>
+
+
+						</form>
+					</div>
+				</div>
+				<hr>
+				<form method="POST">
+					<div class="form-group">
+						<label for="name">Tên Khách Hàng</label>
+						<input type="text" name="name" class="form-control" placeholder="Nhập Tên Khách Hàng">
+						<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+					</div>
+					<div class="form-group">
+						<label for="phone">Số Điện Thoại</label>
+						<input type="text" class="form-control" name="phone" placeholder="Nhập Số Điện Thoại">
+					</div>
+					<div class="form-group">
+						<label for="address">Địa Chỉ</label>
+						<input type="text" class="form-control" name="address" placeholder="Nhập Địa Chỉ">
+					</div>
+
+					<input type="submit" name="addinfo" class="btn btn-primary" value="Thêm Thông Tin"></input>
+					<!-- </div> -->
+				</form>
+				<?php
+				$users = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `tbltaikhoan` WHERE `email` = '" . $_SESSION['email'] . "'"));
+				if (isset($_POST['addinfo'])) {
+					if (!empty($_POST['name']) and !empty($_POST['phone']) and !empty($_POST['address'])) {
+						$name = $_POST['name'];
+						$phone = $_POST['phone'];
+						$address = $_POST['address'];
+						$tongtt = "Tên: " . $name . ", SĐT: " . $phone . ", Địa Chỉ: " . $address;
+						if (empty($_SESSION['email'])) {
+				?>
+							<script>
+								alert("Bạn Cần Đăng Nhập!");
+							</script>
+						<?php
+						} else {
+
+							mysqli_query($conn, "UPDATE `tbltaikhoan` SET `info` = '" . $tongtt . "' WHERE `tbltaikhoan`.`email` = '" . $_SESSION['email'] . "'");
+						?>
+							<script>
+								alert("Cập Nhật Thông Tin Thành Công!");
+							</script>
+							<meta http-equiv="refresh" content="1">
+						<?php
+							// cap nhat tt thanh cong
+						}
+					} else {
+						?>
+						<script>
+							alert("Vui Lòng Nhập Đầy Đủ Thông Tin!");
+						</script>
+				<?php
+						// vui long nhap day du tt
+					}
+				}
+
+				?>
+
+				<div class="row">
+					<div class="col-lg-2 offset-lg-10">
+						<div class="cartbox__total__area">
+							<div class="cart__total__amount">
+								<a href="thanhtoan.php">Thanh toán</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- </form> -->
+				<div class="row">
+					<div class="col-lg-6 offset-lg-6">
+						<div class="cartbox__total__area">
+							<div class="cart__total__amount">
+								<span>Tổng Tiển</span>
+								<span><?php echo number_format($tong); ?> đ</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<!-- cart-main-area end -->
-		
 
 
 
-
-
-
-		<!-- Footer Area -->
-		<footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
-			<div class="footer-static-top">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="footer__widget footer__menu">
-								<div class="ft__logo">
-									<a href="index.php">
-										<img src="images/logo/3.png" alt="logo">
-									</a>
-									<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered duskam alteration variations of passages</p>
-								</div>
-								<div class="footer__content">
-									<ul class="social__net social__net--2 d-flex justify-content-center">
-										<li><a href="#"><i class="bi bi-facebook"></i></a></li>
-										<li><a href="#"><i class="bi bi-google"></i></a></li>
-										<li><a href="#"><i class="bi bi-twitter"></i></a></li>
-										<li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-										<li><a href="#"><i class="bi bi-youtube"></i></a></li>
-									</ul>
-									<ul class="mainmenu d-flex justify-content-center">
-										<li><a href="index.php">Trending</a></li>
-										<li><a href="index.php">Best Seller</a></li>
-										<li><a href="index.php">All Product</a></li>
-										<li><a href="index.php">Wishlist</a></li>
-										<li><a href="index.php">Blog</a></li>
-										<li><a href="index.php">Contact</a></li>
-									</ul>
+		<div class="product-remove" <!-- Footer Area -->
+			<footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
+				<div class="footer-static-top">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="footer__widget footer__menu">
+									<div class="ft__logo">
+										<a href="index.php">
+											<img src="images/logo/3.png" alt="logo">
+										</a>
+										<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered duskam alteration variations of passages</p>
+									</div>
+									<div class="footer__content">
+										<ul class="social__net social__net--2 d-flex justify-content-center">
+											<li><a href="#"><i class="bi bi-facebook"></i></a></li>
+											<li><a href="#"><i class="bi bi-google"></i></a></li>
+											<li><a href="#"><i class="bi bi-twitter"></i></a></li>
+											<li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+											<li><a href="#"><i class="bi bi-youtube"></i></a></li>
+										</ul>
+										<ul class="mainmenu d-flex justify-content-center">
+											<li><a href="index.php">Trending</a></li>
+											<li><a href="index.php">Best Seller</a></li>
+											<li><a href="index.php">All Product</a></li>
+											<li><a href="index.php">Wishlist</a></li>
+											<li><a href="index.php">Blog</a></li>
+											<li><a href="index.php">Contact</a></li>
+										</ul>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="copyright__wrapper">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<div class="copyright">
-								<div class="copy__right__inner text-left">
-									<p>Copyright <i class="fa fa-copyright"></i> <a href="https://freethemescloud.com/">Free themes Cloud.</a> All Rights Reserved</p>
+				<div class="copyright__wrapper">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-12">
+								<div class="copyright">
+									<div class="copy__right__inner text-left">
+										<p>Copyright <i class="fa fa-copyright"></i> <a href="https://freethemescloud.com/">Free themes Cloud.</a> All Rights Reserved</p>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<div class="payment text-right">
-								<img src="images/icons/payment.png" alt="" />
+							<div class="col-lg-6 col-md-6 col-sm-12">
+								<div class="payment text-right">
+									<img src="images/icons/payment.png" alt="" />
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</footer>
-		<!-- //Footer Area -->
+			</footer>
+			<!-- //Footer Area -->
 
-	</div>
-	<!-- //Main wrapper -->
+		</div>
+		<!-- //Main wrapper -->
 
-	<!-- JS Files -->
-	<script src="js/vendor/jquery-3.2.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/active.js"></script>
-	
+		<!-- JS Files -->
+		<script src="js/vendor/jquery-3.2.1.min.js"></script>
+		<script src="js/popper.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/active.js"></script>
+
 </body>
+
 </html>
