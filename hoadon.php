@@ -115,10 +115,28 @@ require $_SERVER['DOCUMENT_ROOT'] . '/Web2/database.php';
 											<div class="switcher-options">
 												<div class="switcher-currency-trigger">
 													<div class="setting__menu">
-														<span><a href="myaccount.php">Tài Khoản Của Bạn</a></span>
-														<span><a href="thanhtoan.php">Đơn Mua </a></span>
-
-														<span><a href="index.php?signout=true">Sign Out</a></span>
+													<span><a href="myaccount.php">Thông Tin Tài Khoản
+														</a></span>
+														
+														<?php
+															function runMyFunction() {
+																session_unset();	
+															}
+															
+															if (isset($_GET['signout'])) {
+																runMyFunction();
+															}
+															if (isset($_SESSION['email']) ) {
+																echo '<span><a href="thanhtoan.php">Đơn Mua	</a></span>';
+																echo '<span><a href="index.php?signout=true" >Đăng Xuất</a></span>';
+															}
+															else {
+																echo '
+																	<span><a href="login.php">Đăng Nhập</a></span>
+																	<span><a href="register.php">Tạo Tài Khoản</a></span>		
+																';
+															}
+															?>
 													</div>
 												</div>
 											</div>
@@ -177,13 +195,15 @@ require $_SERVER['DOCUMENT_ROOT'] . '/Web2/database.php';
 		</header>
 		<!-- //Header -->
 		<!-- Start Search Popup -->
+		<!-- Start Search Popup -->
 		<div class="brown--color box-search-content search_active block-bg close__top">
 			<form name="fr" action="shop-grid.php" id="search_mini_form" class="minisearch" action="">
 				<div class="field__search">
 					<input name="timkiem" type="text" placeholder="Tìm Kiếm Thứ Bạn Muốn Ở Đây...">
 					<div class="action">
-						<button type="submit" name="submit">Seacrh</button>
+						<button type="submit">Seacrh</button>
 					</div>
+					<input type="hidden" name="tranghientai" value="1">
 				</div>
 			</form>
 			<div class="close__wrap">
@@ -220,7 +240,9 @@ require $_SERVER['DOCUMENT_ROOT'] . '/Web2/database.php';
 										</tr>
 									</thead>
 									<tbody>
+
 										<?php
+										if (isset($_SESSION['email'])){
 										$sql = mysqli_query($conn, "SELECT * FROM `tblgiohang1` WHERE `email` = '" . $_SESSION['email'] . "'");
 										$tong = 0;
 										while ($row = mysqli_fetch_array($sql)) {
@@ -238,7 +260,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/Web2/database.php';
 												<!-- < -->
 												<td class="product-remove"><a href="giohang_delete.php?id=<?php echo $row['id']; ?>">X</a></td>
 											</tr>
-										<?php } ?><!-- <tr>
+										<?php }} ?><!-- <tr>
                                             <td class="product-thumbnail"><a href="#"><img src="images/product/sm-3/1.jpg" alt="product img"></a></td>
                                             <td class="product-name"><a href="#">Natoque penatibus</a></td>
                                             <td class="product-price"><span class="amount">$165.00</span></td>
@@ -255,15 +277,27 @@ require $_SERVER['DOCUMENT_ROOT'] . '/Web2/database.php';
 					</div>
 				</div>
 				<hr>
-				<form method="GET" action="xu_ly_thanh_toan.php">
+				<script>
+				function validateForm() {
+					var phone = document.getElementById("phone").value.trim();
+					var address = document.getElementById("address").value.trim();
+					
+					if (phone === '' || address === '') {
+						alert("Vui lòng điền đầy đủ thông tin!");
+						return false;
+					}
+					return true;
+				}
+				</script>
+				<form method="GET" action="xu_ly_thanh_toan.php" onsubmit="return validateForm()">
 
 					<div style="margin-top: 20pt;" class="form-group">
 						<label for="phone">Số Điện Thoại</label>
-						<input type="text" class="form-control" name="phone" placeholder="Nhập Số Điện Thoại">
+						<input type="text" class="form-control" id="phone" name="phone" placeholder="Nhập Số Điện Thoại">
 					</div>
 					<div class="form-group">
 						<label for="address">Địa Chỉ Giao Hàng</label>
-						<input type="text" class="form-control" name="address" placeholder="Nhập Địa Chỉ">
+						<input type="text" class="form-control" id="address" name="address" placeholder="Nhập Địa Chỉ">
 					</div>
 					<input type="submit" name="addinfo" class="btn btn-primary" value="Thanh toán"></input>
 					<!-- 
